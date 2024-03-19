@@ -5,6 +5,9 @@ use App\Http\Controllers\PhotosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
 
 /*
@@ -42,3 +45,11 @@ Route::delete('/photo/{id}', [PhotosController::class, 'destroy'])->name('photos
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
+
+Route::post('/photos/{photo}/like', [LikeController::class, 'toggle'])->name('likes.toggle');
+Route::post('/photos/{photo}/comments', [CommentController::class, 'store'])->name('comments.store');
+

@@ -16,7 +16,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button type="submit">Hapus</button>
+                <button type="button" class="btn btn-danger">Hapus</button>
             </form>
         </div>
     </div>

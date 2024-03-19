@@ -27,15 +27,13 @@
         <div id="app">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Photo Gallery</a>
+                    <img src="{{ asset('images/avenged.png') }}" alt="Logo" style="width: 60px; height: 80px; margin-right: 10px;">
+                  <a class="navbar-brand" href="#">Beatrix Gallery  |</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/">Home</a>
-                      </li>
                       <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="/albums">Albums</a>
                       </li>
@@ -44,9 +42,6 @@
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="/albums/create">Create Albums</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/albums/create">Create Photos</a>
                       </li>
                     </ul>
                   </div>
@@ -57,7 +52,7 @@
                         <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-link">Logout</button>
+                                <button type="button" class="btn btn-warning">Logout</button>
                             </form>
                         </li>
                     </ul>

@@ -26,6 +26,23 @@
                 <h5 class="card-title">{{$photo->name}}</h5>
                 <p class="card-text">{{$photo->description}}</p>
                 <a href="{{route('photos.show' , $photo->id)}}" class="btn btn-primary">View</a>
+
+                <!-- Tombol Like -->
+<form method="POST" action="{{ route('likes.toggle', $photo->id) }}">
+    @csrf
+    <button type="submit">Like</button>
+</form>
+
+<!-- Form Komentar -->
+<form method="POST" action="{{ route('comments.store', $photo->id) }}">
+    @csrf
+    <textarea name="content" rows="3" placeholder="Tambahkan komentar"></textarea>
+    <button type="submit" class="btn btn-success">Komentar</button>
+</form>
+<!-- Daftar Komentar -->
+@foreach ($photo->photoComments as $comment)
+    <p>{{ $comment->user->name }}: {{ $comment->content }}</p>
+@endforeach
             </div>
         </div>
     </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
-use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class AlbumsController extends Controller
@@ -14,17 +13,17 @@ class AlbumsController extends Controller
         return view('albums.index', compact('albums'));
     }
 
-
     public function create()
     {
         return view('albums.create');
     }
 
-
     public function show(Album $album)
     {
-        $album = Album::findOrFail($album->id);
-        // $photo = Photo::findOrFail($album->id);
+        // Menggunakan model binding, tidak perlu mencari ulang dengan findOrFail
+        if (!$album) {
+            abort(404); // Atau handle sesuai kebutuhan Anda
+        }
 
         return view('albums.show', compact('album'));
     }
@@ -37,27 +36,15 @@ class AlbumsController extends Controller
             'description' => 'required'
         ]);
 
-        // Get filename with extension
-        $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+        // Upload dan simpan gambar
+        $fileNameToStore = $this->uploadImage($request->file('cover_image'));
 
-        // Get just filename
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-        // Get just extension
-        $extension = $request->file('cover_image')->getClientOriginalExtension();
-
-        // Filename to store
-        $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-
-        // Upload image
-        $path = $request->file('cover_image')->storeAs('public/album_covers', $fileNameToStore);
-
-        // Create album
-        $album = new Album;
-        $album->name = $request->input('name');
-        $album->description = $request->input('description');
-        $album->cover_image = $fileNameToStore;
-        $album->save();
+        // Buat album baru
+        Album::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'cover_image' => $fileNameToStore,
+        ]);
 
         return redirect('/albums')->with('success', 'Album created');
     }
@@ -65,7 +52,34 @@ class AlbumsController extends Controller
     public function destroy($id)
     {
         $album = Album::findOrFail($id);
+
+        // Hapus gambar terkait sebelum menghapus album
+        $this->deleteImage($album->cover_image);
+
+        // Hapus album
         $album->delete();
+
         return redirect('/albums')->with('success', 'Album deleted');
+    }
+
+    // Fungsi untuk mengupload gambar
+    private function uploadImage($image)
+    {
+        $filenameWithExt = $image->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $image->getClientOriginalExtension();
+        $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+
+        $path = $image->storeAs('public/album_covers', $fileNameToStore);
+
+        return $fileNameToStore;
+    }
+
+    // Fungsi untuk menghapus gambar
+    private function deleteImage($filename)
+    {
+        if ($filename != 'noimage.jpg') {
+            Storage::delete('public/album_covers/' . $filename);
+        }
     }
 }

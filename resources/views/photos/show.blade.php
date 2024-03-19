@@ -7,7 +7,7 @@
 <form action="{{route('photos.destroy' , $photo->id)}}" method="post">
 @csrf
 @method('delete')
-<button type="submit" class="btn btn-danger m-2">Delete</button>
+<button type="button" class="btn btn-danger">Hapus</button>
 </form>
 <div>
     <img src="/storage/albums/{{$photo->album->id}}/{{$photo->photo}}" alt="" height="500px">
