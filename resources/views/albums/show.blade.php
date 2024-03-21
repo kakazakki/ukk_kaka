@@ -28,10 +28,10 @@
                 <a href="{{route('photos.show' , $photo->id)}}" class="btn btn-primary">View</a>
 
                 <!-- Tombol Like -->
-<form method="POST" action="{{ route('likes.toggle', $photo->id) }}">
+{{-- <form method="POST" action="{{ route('likes.toggle', $photo->id) }}">
     @csrf
     <button type="submit">Like</button>
-</form>
+</form> --}}
 
 <!-- Form Komentar -->
 <form method="POST" action="{{ route('comments.store', $photo->id) }}">

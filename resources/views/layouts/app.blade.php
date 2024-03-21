@@ -38,25 +38,23 @@
                         <a class="nav-link " aria-current="page" href="/albums">Albums</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/photos">Photos</a>
-                      </li>
-                      <li class="nav-item">
                         <a class="nav-link" href="/albums/create">Create Albums</a>
                       </li>
                     </ul>
                   </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="button" class="btn btn-warning">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                <a class="nav-link" href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <button type="button" class="btn btn-warning">Logout</button>
+                                </a>
+                            </li>
+                    </div>
               </nav>
 
             <main class="py-4">

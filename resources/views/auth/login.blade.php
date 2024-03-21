@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #383334;
             margin: 0;
             padding: 0;
             display: flex;
@@ -29,7 +29,7 @@
 
         h2 {
             text-align: center;
-            color: #333333;
+            color: #5bc41e;
         }
 
         label {
@@ -64,10 +64,11 @@
 </head>
 <body>
 
-    <h2>Login</h2>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+
+        <h2>Login</h2>
 
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
@@ -76,6 +77,9 @@
         <input type="password" name="password" id="password" required>
 
         <button type="submit">Login</button>
+        <!-- Tautan ke halaman pendaftaran -->
+<p>Belum punya akun? <a href="{{ route('auth.register') }}">Daftar sekarang</a></p>
+
     </form>
 
 </body>

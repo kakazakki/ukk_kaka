@@ -6,6 +6,8 @@ use App\Models\Comment;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class CommentController extends Controller
 {
