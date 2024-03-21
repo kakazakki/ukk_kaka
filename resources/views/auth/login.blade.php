@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #383334;
+            background-color: #e0113b;
             margin: 0;
             padding: 0;
             display: flex;
@@ -29,7 +29,7 @@
 
         h2 {
             text-align: center;
-            color: #5bc41e;
+            color: #000000;
         }
 
         label {
@@ -48,7 +48,7 @@
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #070c07;
             color: white;
             padding: 10px;
             border: none;
@@ -68,7 +68,7 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <h2>Login</h2>
+        <h2>Form Login</h2>
 
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>

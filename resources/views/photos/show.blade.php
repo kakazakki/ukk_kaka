@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>{{$photo->title}}</h1>
-<a href="/albums/{{$photo->album->id}}" class="btn btn-secondary m-2">Back</a>
+<a href="/albums/{{$photo->album->id}}" class="btn btn-secondary m-2">Kembali</a>
 <form action="{{route('photos.destroy' , $photo->id)}}" method="post">
     @csrf
     @method('delete')

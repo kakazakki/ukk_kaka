@@ -25,10 +25,10 @@
 <body>
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-success">
                 <div class="container-fluid">
-                    <img src="{{ asset('images/avenged.png') }}" alt="Logo" style="width: 60px; height: 80px; margin-right: 10px;">
-                  <a class="navbar-brand" href="#">Beatrix Gallery  |</a>
+                    <img src="{{ asset('images/kai.jpg') }}" alt="Logo" style="width: 60px; height: 80px; margin-right: 10px;">
+                  <a class="navbar-brand" href="#">Faramis Gallery  |</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -38,7 +38,7 @@
                         <a class="nav-link " aria-current="page" href="/albums">Albums</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="/albums/create">Create Albums</a>
+                        <a class="nav-link" href="/albums/create">Buat Albums</a>
                       </li>
                     </ul>
                   </div>
@@ -51,7 +51,7 @@
                                     @csrf
                                 </form>
                                 <a class="nav-link" href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <button type="button" class="btn btn-warning">Logout</button>
+                                    <button type="button" class="btn btn-danger">Logout</button>
                                 </a>
                             </li>
                     </div>

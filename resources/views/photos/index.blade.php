@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1>Create Photo</h1>
+<h1>Buat Foto</h1>
 
 @endsection

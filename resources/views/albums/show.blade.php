@@ -9,7 +9,7 @@
         <p class="lead text-muted">{{$album->description}}</p>
         <p>
           <a href="/photo/upload/{{$album->id}}" class="btn btn-primary my-2">Upload Photo</a>
-          <a href="/albums" class="btn btn-secondary my-2">Back</a>
+          <a href="/albums" class="btn btn-secondary my-2">Kembali</a>
         </p>
       </div>
     </div>
@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$photo->name}}</h5>
                 <p class="card-text">{{$photo->description}}</p>
-                <a href="{{route('photos.show' , $photo->id)}}" class="btn btn-primary">View</a>
+                <a href="{{route('photos.show' , $photo->id)}}" class="btn btn-primary">Lihat</a>
 
                 <!-- Tombol Like -->
 {{-- <form method="POST" action="{{ route('likes.toggle', $photo->id) }}">
@@ -37,7 +37,7 @@
 <form method="POST" action="{{ route('comments.store', $photo->id) }}">
     @csrf
     <textarea name="content" rows="3" placeholder="Tambahkan komentar"></textarea>
-    <button type="submit" class="btn btn-success">Komentar</button>
+    <button type="submit" class="btn btn-success">Komen</button>
 </form>
 <!-- Daftar Komentar -->
 @foreach ($photo->photoComments as $comment)
