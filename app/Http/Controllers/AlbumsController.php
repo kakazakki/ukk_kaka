@@ -6,7 +6,6 @@ use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-
 class AlbumsController extends Controller
 {
     public function index()
@@ -55,14 +54,20 @@ class AlbumsController extends Controller
     {
         $album = Album::findOrFail($id);
 
-        // Hapus gambar terkait sebelum menghapus album
-        $this->deleteImage($album->cover_image);
+        // Delete the image associated with the album
+        if ($album->cover_image != 'noimage.jpg') {
+            Storage::delete('public/album_covers/' . $album->cover_image);
+        }
 
-        // Hapus album
+        // Delete the album
         $album->delete();
+
+        // Remove symbolic link to the storage directory
+        Storage::deleteDirectory('public/album_covers/' . $id);
 
         return redirect('/albums')->with('success', 'Album deleted');
     }
+
 
     // Fungsi untuk mengupload gambar
     private function uploadImage($image)
@@ -77,11 +82,4 @@ class AlbumsController extends Controller
         return $fileNameToStore;
     }
 
-    // Fungsi untuk menghapus gambar
-    private function deleteImage($filename)
-    {
-        if ($filename != 'noimage.jpg') {
-            Storage::delete('public/album_covers/' . $filename);
-        }
-    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,5 +63,7 @@ class PhotosController extends Controller
         $photo = Photo::findOrFail($id);
         $photo->delete();
         return redirect('/albums/' . $photo->album_id)->with('success', 'Photo deleted');
+         // Remove symbolic link to the storage directory
+        Storage::deleteDirectory('/albums/' .$photo->album.'/'. $id);
     }
 }

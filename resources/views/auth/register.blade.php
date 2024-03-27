@@ -7,12 +7,67 @@
     <title>Register User</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #383334;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            height: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5bc41e;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="container"><br>
         <div class="col-md-6 col-md-offset-3">
-            <h2 class="text-center">FORM REGISTER USER</h3>
-            <hr>
+
             @if(session('message'))
             <div class="alert alert-success">
                 {{session('message')}}
@@ -21,6 +76,7 @@
             <form action="{{route('auth.store')}}" method="post">
             @csrf
                 <div class="form-group">
+                    <h2 class="text-center">FORM REGISTER USER</h3>
                     <label><i class="fa fa-envelope"></i> Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Email" required="">
                 </div>
